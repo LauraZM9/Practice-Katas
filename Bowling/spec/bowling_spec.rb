@@ -79,14 +79,19 @@ describe Bowling do
     end
 end 
 
+# Cases that will definitely work
 # "45 32"
 # "45 9-"
 # "45 X"
 # "45 5/"
+
+# Complex cases that we already handled
 # "X X" *
-# "X 45"
+# "X 45" *
 # "X 5/" *
 # "X 9-" *
+
+# Complex cases that we didn't yet handle
 # "5/ 9-" *
 # "5/ 5/" *
-# "9- 9-"
+# or more than 2 frames at a time
