@@ -1,5 +1,5 @@
 class Bowling
     def do_something(thing)
-        "something"
+        9
     end
 end
