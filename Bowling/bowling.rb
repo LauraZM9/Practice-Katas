@@ -1,4 +1,5 @@
 class Bowling
+    # think of some name for max score = 10
     def get_total_score(frames)
         """ Gets the total score for all frames
         Params:
@@ -9,7 +10,7 @@ class Bowling
         frames_list = frames.split(" ")
         score = 0
         frames_list.each do |frame|
-            if frame == "X" && frames_list.index(frame) < frames_list.length - 1
+            if strike?(frame) && frames_list.last != "X"
                 next_frame = frames_list[frames_list.index(frame) + 1]
                 score += 10 + get_score_frame(next_frame)
             else
@@ -19,6 +20,8 @@ class Bowling
         score
     end
 
+    private
+
     def get_score_frame(frame)
         """ Gets score for only one frame
         Params:
@@ -26,7 +29,7 @@ class Bowling
         Returns:
         score(integer): the score per one frame individually
         """
-        if frame == "X"
+        if strike?(frame)
             score = 10
         else
             first_roll = frame[0]  
@@ -39,5 +42,10 @@ class Bowling
         end
         score 
     end
+
+    def strike?(frame)
+        frame == "X"
+    end
+
 end 
 
