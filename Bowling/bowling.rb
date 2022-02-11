@@ -10,9 +10,12 @@ class Bowling
         frames_list = frames.split(" ")
         score = 0
         frames_list.each do |frame|
-            if strike?(frame) && frames_list.last != "X"
+            if strike?(frame) && frames_list.last != frame
                 next_frame = frames_list[frames_list.index(frame) + 1]
                 score += 10 + get_score_frame(next_frame)
+            elsif spare?(frame) && frames_list.last != frame
+                next_frame = frames_list[frames_list.index(frame) + 1]
+                score += 10 + score_per_roll(next_frame[0])
             else
                 score += get_score_frame(frame)
             end
@@ -21,6 +24,15 @@ class Bowling
     end
 
     private
+
+    def score_per_roll(roll)
+        if strike?(roll) 
+            score = 10
+        else
+            score = roll.to_i
+        end
+        score
+    end
 
     def get_score_frame(frame)
         """ Gets score for only one frame
@@ -45,6 +57,10 @@ class Bowling
 
     def strike?(frame)
         frame == "X"
+    end
+
+    def spare?(frame) "4/"
+        frame[1] == "/"
     end
 
 end 

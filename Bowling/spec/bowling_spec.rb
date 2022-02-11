@@ -1,9 +1,10 @@
 require_relative '../bowling'
 
 describe Bowling do
+    bowling = Bowling.new
     it "adds two rolls together" do
         # Arrange
-        bowling = described_class.new
+        # bowling = described_class.new
 
         # Act
         result = bowling.get_total_score("45")
@@ -14,7 +15,7 @@ describe Bowling do
 
     it "adds two other rolls together" do
         # Arrange
-        bowling = described_class.new
+        # bowling = described_class.new
 
         # Act
         result = bowling.get_total_score("32")
@@ -25,7 +26,7 @@ describe Bowling do
 
     it "adds a roll and a miss" do
         # Arrange
-        bowling = described_class.new
+        # bowling = described_class.new
 
         # Act
         result = bowling.get_total_score("9-")   
@@ -36,7 +37,7 @@ describe Bowling do
 
     it "adds a roll and a spare" do
         # Arrange
-        bowling = described_class.new
+        # bowling = described_class.new
 
         # Act
         result = bowling.get_total_score("5/")      
@@ -47,7 +48,7 @@ describe Bowling do
 
     it "adds a strike" do
         # Arrange
-        bowling = described_class.new
+        # bowling = described_class.new
 
         # Act
         result = bowling.get_total_score("X")      
@@ -58,7 +59,7 @@ describe Bowling do
 
     it "adds two frames with first one being a number" do
         # Arrange
-        bowling = described_class.new
+        # bowling = described_class.new
 
         # Act
         result = bowling.get_total_score("45 32")      
@@ -69,7 +70,7 @@ describe Bowling do
 
     it "adds two frames with first one strike and second number" do
         # Arrange
-        bowling = described_class.new
+        # bowling = described_class.new
 
         # Act
         result = bowling.get_total_score("X 45")      
@@ -77,6 +78,30 @@ describe Bowling do
         # Assert
         expect(result).to eq(28)
     end
+
+    it "adds two frames with one spare and a number" do
+        # Arrange
+        # bowling = described_class.new
+
+        # Act
+        result = bowling.get_total_score("5/ 45")      
+
+        # Assert
+        expect(result).to eq(23)
+    end
+
+    it "adds four frames spare-strike-number-miss" do
+        # Arrange
+        # bowling = described_class.new
+
+        # Act
+        result = bowling.get_total_score("5/ X 45 9-")      
+
+        # Assert
+        expect(result).to eq(57)
+    end
+
+    
 end 
 
 # Cases that will definitely work
